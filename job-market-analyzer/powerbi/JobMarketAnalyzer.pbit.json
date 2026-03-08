@@ -1,0 +1,43 @@
+{
+  "description": "Power BI template for Job Market Analyzer",
+  "instructions": "This is a JSON representation of the Power BI template configuration. To use with Power BI: 1) Open Power BI Desktop, 2) Get Data > Text/CSV, 3) Point to the exports/ directory, 4) Import jobs.csv, skills_stats.csv, salary_stats.csv, work_type_stats.csv, company_stats.csv, demand_stats.csv",
+  "dataSources": [
+    {
+      "name": "jobs",
+      "file": "../exports/jobs.csv",
+      "columns": ["id", "title", "company", "location", "salary_min", "salary_max", "skills", "experience_level", "work_type", "date_posted", "source_url", "role_type"]
+    },
+    {
+      "name": "skills_stats",
+      "file": "../exports/skills_stats.csv",
+      "columns": ["skill", "count", "role_type"]
+    },
+    {
+      "name": "salary_stats",
+      "file": "../exports/salary_stats.csv",
+      "columns": ["group_key", "group_type", "group_value", "avg_salary", "min_salary", "max_salary", "count"]
+    },
+    {
+      "name": "work_type_stats",
+      "file": "../exports/work_type_stats.csv",
+      "columns": ["work_type", "count"]
+    },
+    {
+      "name": "company_stats",
+      "file": "../exports/company_stats.csv",
+      "columns": ["company", "count"]
+    },
+    {
+      "name": "demand_stats",
+      "file": "../exports/demand_stats.csv",
+      "columns": ["experience_level", "count"]
+    }
+  ],
+  "suggestedVisuals": [
+    { "type": "bar_chart", "title": "Top Skills by Frequency", "source": "skills_stats", "x": "skill", "y": "count" },
+    { "type": "matrix", "title": "Salary by Role/Location/Experience", "source": "salary_stats" },
+    { "type": "pie_chart", "title": "Work Type Distribution", "source": "work_type_stats", "category": "work_type", "value": "count" },
+    { "type": "bar_chart", "title": "Top Hiring Companies", "source": "company_stats", "x": "company", "y": "count" },
+    { "type": "bar_chart", "title": "Experience Level Demand", "source": "demand_stats", "x": "experience_level", "y": "count" }
+  ]
+}
