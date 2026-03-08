@@ -1,4 +1,5 @@
-const BASE = '/api'
+const API_HOST = import.meta.env.VITE_API_URL || ''
+const BASE = `${API_HOST}/api`
 
 // Fallback data for static deployment (no backend)
 const FALLBACK = {

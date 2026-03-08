@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: job-market-analyzer-api
+    runtime: python
+    rootDir: backend
+    buildCommand: bash render_build.sh
+    startCommand: uvicorn api_server:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: RAPIDAPI_KEY
+        sync: false
+      - key: DATABASE_PATH
+        value: /tmp/data/jobs.db
+      - key: PYTHON_VERSION
+        value: 3.11.0

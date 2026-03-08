@@ -18,6 +18,9 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DATABASE_PATH = os.getenv("DATABASE_PATH", str(PROJECT_ROOT / "data" / "jobs.db"))
 EXPORT_DIR = os.getenv("EXPORT_DIR", str(PROJECT_ROOT / "exports"))
 
+# Ensure database directory exists
+Path(DATABASE_PATH).parent.mkdir(parents=True, exist_ok=True)
+
 SKILLS_LIST = [
     "Python", "SQL", "R", "Tableau", "Power BI", "Excel", "SAS", "SPSS",
     "Spark", "Hadoop", "AWS", "Azure", "GCP", "Snowflake", "Databricks",
